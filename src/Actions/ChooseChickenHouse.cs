@@ -10,9 +10,15 @@ namespace Trestlebridge.Actions {
       Utils.Clear ();
 
       for (int i = 0; i < farm.ChickenHouses.Count; i++) {
+        if (farm.ChickenHouses[i].Animals.Count == farm.ChickenHouses[i].Capacity)
+        {
+          Console.WriteLine();
+        }
+        else
+        {
         Console.Write ($"{i + 1}. Chicken House {farm.ChickenHouses[i].AnimalCount()} ");
-
         Console.WriteLine ();
+        }
       }
 
       Console.WriteLine ();
