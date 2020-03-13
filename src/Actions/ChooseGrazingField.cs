@@ -16,6 +16,7 @@ namespace Trestlebridge.Actions
             {
                 Console.Write($"{i + 1}. Grazing Field {farm.GrazingFields[i].AnimalCount()} ");
                 farm.GrazingFields[i].AnimalTypeCount();
+                Console.WriteLine();
             }
 
             Console.WriteLine();
