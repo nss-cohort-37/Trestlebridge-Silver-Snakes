@@ -1,6 +1,6 @@
 namespace Trestlebridge.Interfaces {
-    public interface ISeedProducing {
-        string Type { get; }
+    public interface ISeedComposts {
+        double Compost ();
         double Harvest ();
     }
 }
