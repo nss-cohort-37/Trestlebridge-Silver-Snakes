@@ -47,5 +47,10 @@ namespace Trestlebridge.Models.Facilities {
 
             return output.ToString();
         }
+
+        public string AnimalCount()
+        {
+            return $"({this._animals.Count} animals)";
+        }
     }
 }
