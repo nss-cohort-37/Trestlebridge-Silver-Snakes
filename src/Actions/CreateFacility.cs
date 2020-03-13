@@ -15,10 +15,12 @@ namespace Trestlebridge.Actions {
             Console.Write ("> ");
             string input = Console.ReadLine ();
 
-            switch (Int32.Parse(input))
-            {
+            switch (Int32.Parse (input)) {
                 case 1:
-                    farm.AddGrazingField(new GrazingField());
+                    farm.AddGrazingField (new GrazingField ());
+                    Console.WriteLine ("Congrats! You've created a grazing field.");
+                    Console.WriteLine ("Press return to go back to the main menu.");
+                    Console.ReadLine ();
                     break;
                 default:
                     break;
