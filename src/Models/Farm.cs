@@ -45,7 +45,6 @@ namespace Trestlebridge.Models
 
             GrazingFields.ForEach(gf => report.Append(gf));
             DuckHouses.ForEach(dh => report.Append(dh));
-
             return report.ToString();
         }
     }
