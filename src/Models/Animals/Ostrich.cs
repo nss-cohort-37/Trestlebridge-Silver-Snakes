@@ -8,6 +8,8 @@ namespace Trestlebridge.Models.Animals {
         private Guid _id = Guid.NewGuid();
         private double _meatProduced = 2.6;
 
+        private int _eggProduced = 3;
+
         private string _shortId {
             get {
                 return this._id.ToString().Substring(this._id.ToString().Length - 6);
@@ -24,6 +26,10 @@ namespace Trestlebridge.Models.Animals {
 
         public double Butcher () {
             return _meatProduced;
+        }
+
+        public int Hatch () {
+            return _eggProduced;
         }
 
         public override string ToString () {
