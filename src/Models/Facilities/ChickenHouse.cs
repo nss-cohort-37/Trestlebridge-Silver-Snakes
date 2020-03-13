@@ -11,6 +11,12 @@ namespace Trestlebridge.Models.Facilities {
                 return _capacity;
             }
         }
+
+        public List<Chicken> Animals {
+            get {
+                return _animals;
+            }
+        }
         private Guid _id = Guid.NewGuid ();
         private List<Chicken> _animals = new List<Chicken> ();
 

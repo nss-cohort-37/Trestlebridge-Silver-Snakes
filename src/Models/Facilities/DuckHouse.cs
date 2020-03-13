@@ -17,6 +17,12 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        public List<Duck> Animals {
+            get {
+                return _animals;
+            }
+        }
+
         public void AddResource (Duck animal) {
             // TODO: implement this...
             try {

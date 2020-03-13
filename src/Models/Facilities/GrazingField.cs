@@ -18,17 +18,22 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        public List<IGrazing> Animals {
+            get {
+                return _animals;
+            }
+        }
+
         public void AddResource (IGrazing animal)
         {
-            // TODO: implement this...
-            try
-            {
-                _animals.Add(animal);
-            }
-            catch
-            {
-                Console.WriteLine("This animal doesn't belong in this field!");
-            }
+                try
+                {
+                    _animals.Add(animal);
+                }
+                catch
+                {
+                    Console.WriteLine("This animal doesn't belong in this field!");
+                }
         }
 
         public void AddResource (List<IGrazing> animals) 
