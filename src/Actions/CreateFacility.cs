@@ -25,7 +25,7 @@ namespace Trestlebridge.Actions
                     farm.AddGrazingField(new GrazingField());
                     break;
                 case 4:
-                    farm.AddGrazingField(new GrazingField());
+                    farm.AddDuckHouse(new DuckHouse());
                     break;
                 default:
                     break;
