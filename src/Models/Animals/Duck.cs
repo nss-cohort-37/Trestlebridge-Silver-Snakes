@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Animals {
-  public class Duck : IResource {
+  public class Duck : IResource, IFeatherProducing, IEggProducing {
 
     private Guid _id = Guid.NewGuid ();
 

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Animals {
-  public class Chicken : IResource, IMeatProducing {
+  public class Chicken : IResource, IMeatProducing, IEggProducing, IFeatherProducing {
 
     private Guid _id = Guid.NewGuid ();
+
+    private List<Chicken> _animals = new List<Chicken> ();
     private double _meatProduced = 1.7;
 
     private int _eggsProduced = 7;
