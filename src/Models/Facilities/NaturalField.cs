@@ -6,9 +6,9 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities
 {
-    public class PlowedField : IFacility<ISeedProducing>
+    public class NaturalField : IFacility<ISeedProducing>
     {
-        private int _capacity = 13;
+        private int _capacity = 10;
         private Guid _id = Guid.NewGuid();
 
         private List<ISeedProducing> _plants = new List<ISeedProducing>();
@@ -45,7 +45,7 @@ namespace Trestlebridge.Models.Facilities
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
-            output.Append($"Plowed field {shortId} has {this._plants.Count} plants\n");
+            output.Append($"Natural field {shortId} has {this._plants.Count} plants\n");
             this._plants.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
