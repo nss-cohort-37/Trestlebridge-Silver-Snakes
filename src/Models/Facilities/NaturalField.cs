@@ -11,7 +11,7 @@ namespace Trestlebridge.Models.Facilities
         private int _capacity = 6;
         private Guid _id = Guid.NewGuid();
 
-        private List<IResource> _plants = new List<IResource>();
+        private List<ISeedProducing> _plants = new List<ISeedProducing>();
 
         public double Capacity
         {
@@ -21,7 +21,7 @@ namespace Trestlebridge.Models.Facilities
             }
         }
 
-        public void AddResource(IResource plant)
+        public void AddResource(ISeedProducing plant)
         {
             // TODO: implement this...
             try
@@ -34,7 +34,7 @@ namespace Trestlebridge.Models.Facilities
             }
         }
 
-        public void AddResource(List<IResource> plants)
+        public void AddResource(List<ISeedProducing> plants)
         {
             // TODO: implement this...
             throw new NotImplementedException();
