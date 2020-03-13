@@ -11,6 +11,7 @@ namespace Trestlebridge.Actions
         {
             Console.WriteLine("1. Grazing field");
             Console.WriteLine("2. Plowed field");
+            Console.WriteLine("3. Natural field");
             Console.WriteLine("4. Duck House");
 
             Console.WriteLine();
@@ -19,12 +20,19 @@ namespace Trestlebridge.Actions
             Console.Write("> ");
             string input = Console.ReadLine();
 
-            switch (Int32.Parse (input)) {
+            switch (Int32.Parse(input))
+            {
                 case 1:
-                    farm.AddGrazingField (new GrazingField ());
-                    Console.WriteLine ("Congrats! You've created a grazing field.");
-                    Console.WriteLine ("Press return to go back to the main menu.");
-                    Console.ReadLine ();
+                    farm.AddGrazingField(new GrazingField());
+                    Console.WriteLine("Congrats! You've created a grazing field.");
+                    Console.WriteLine("Press return to go back to the main menu.");
+                    Console.ReadLine();
+                    break;
+                case 3:
+                    farm.AddNaturalField(new NaturalField());
+                    Console.WriteLine("Congrats! You've created a natural field.");
+                    Console.WriteLine("Press return to go back to the main menu.");
+                    Console.ReadLine();
                     break;
                 case 4:
                     farm.AddDuckHouse(new DuckHouse());
