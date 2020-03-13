@@ -6,12 +6,12 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities
 {
-    public class NaturalField : IFacility<IGrazing>
+    public class NaturalField : IFacility<ISeedProducing>
     {
-        private int _capacity = 50;
+        private int _capacity = 6;
         private Guid _id = Guid.NewGuid();
 
-        private List<IGrazing> _animals = new List<IGrazing>();
+        private List<IResource> _plants = new List<IResource>();
 
         public double Capacity
         {
@@ -21,20 +21,20 @@ namespace Trestlebridge.Models.Facilities
             }
         }
 
-        public void AddResource(IGrazing animal)
+        public void AddResource(IResource plant)
         {
             // TODO: implement this...
             try
             {
-                _animals.Add(animal);
+                _plants.Add(plant);
             }
             catch
             {
-                Console.WriteLine("This animal doesn't belong in this field!");
+                Console.WriteLine("This plant doesn't belong in this field!");
             }
         }
 
-        public void AddResource(List<IGrazing> animals)
+        public void AddResource(List<IResource> plants)
         {
             // TODO: implement this...
             throw new NotImplementedException();
@@ -45,15 +45,10 @@ namespace Trestlebridge.Models.Facilities
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
-            output.Append($"Natural field {shortId} has {this._animals.Count} animals\n");
-            this._animals.ForEach(a => output.Append($"   {a}\n"));
+            output.Append($"Natural field {shortId} has {this._plants.Count} plants\n");
+            this._plants.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
-        }
-
-        public string AnimalCount()
-        {
-            return $"({this._animals.Count} animals)";
         }
     }
 }
