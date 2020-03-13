@@ -28,9 +28,15 @@ namespace Trestlebridge.Actions {
 
                 case 4:
                     farm.AddDuckHouse (new DuckHouse ());
+                    Console.WriteLine ("Congrats! You've created a duck house.");
+                    Console.WriteLine ("Press return to go back to the main menu.");
+                    Console.ReadLine ();
                     break;
                 case 5:
                     farm.AddChickenHouse (new ChickenHouse ());
+                    Console.WriteLine ("Congrats! You've created a chicken house.");
+                    Console.WriteLine ("Press return to go back to the main menu.");
+                    Console.ReadLine ();
                     break;
                 default:
                     break;
