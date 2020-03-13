@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
-
+using System.Linq;
 
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing>
@@ -52,5 +52,39 @@ namespace Trestlebridge.Models.Facilities {
         {
             return $"({this._animals.Count} animals)";
         }
+
+        public void AnimalTypeCount()
+        {
+            if (this._animals.Count > 0)
+            {
+            var animalTypeCount = this._animals
+                .GroupBy(animal => animal.Type)
+                .Select(group =>
+                {
+                    return new AnimalReport
+                    {
+                        AnimalType = group.Key,
+                        AnimalCount = group.Count()
+                    };
+                });
+
+                foreach (var report in animalTypeCount)
+                {
+                    if (report.AnimalCount == 1)
+                    {
+                        Console.Write($"({report.AnimalCount} {report.AnimalType}) ");
+                    }
+                    else
+                    {
+                        Console.Write($"({report.AnimalCount} {report.AnimalType}s) ");
+                    }
+                }
+            }
+        }
+    }
+    public class AnimalReport
+    {
+        public string AnimalType { get; set; }
+        public int AnimalCount { get; set; }
     }
 }
