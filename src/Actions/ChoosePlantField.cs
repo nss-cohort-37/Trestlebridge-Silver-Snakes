@@ -53,36 +53,53 @@ namespace Trestlebridge.Actions {
             Console.WriteLine ();
 
             // How can I output the type of Plant chosen here?
-            Console.WriteLine ($"Place the Plant where?");
-
-            Console.Write ("> ");
-            int choice = Int32.Parse (Console.ReadLine ()) - 1;
-
-            if (fieldTypeNum == 1) {
-                farm.PlowedFields[choice].AddResource (Plant);
-                Console.WriteLine("Congrats! You've planted a row of Sesame seeds in a plowed field.");
-                Console.WriteLine("Press return to go back to the main menu.");
-                Console.ReadLine();
-            } else if (fieldTypeNum == 2) {
-                farm.NaturalFields[choice].AddResource (Plant);
-                Console.WriteLine("Congrats! You've planted a row of Wildflower seeds in a natural field.");
-                Console.WriteLine("Press return to go back to the main menu.");
-                Console.ReadLine();
-            } else {
-                if (choice > farm.NaturalFields.Count - 1) {
-                    choice = choice - farm.NaturalFields.Count;
-                    farm.PlowedFields[choice].AddResource (Plant);
-                    Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a plowed field.");
-                    Console.WriteLine("Press return to go back to the main menu.");
-                    Console.ReadLine();
-                } else {
-                    farm.NaturalFields[choice].AddResource (Plant);
-                    Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a natural field.");
-                    Console.WriteLine("Press return to go back to the main menu.");
-                    Console.ReadLine();
+            while(true)
+            {
+                Console.WriteLine ($"Place the Plant where?");
+                Console.Write ("> ");
+                try
+                {
+                    var choice = Console.ReadLine ();
+                    if (String.IsNullOrEmpty(choice))
+                    {
+                      break;
+                    }
+                    else
+                    {
+                        var parsedChoice = Int32.Parse(choice) - 1;
+                        if (fieldTypeNum == 1) {
+                            farm.PlowedFields[parsedChoice].AddResource (Plant);
+                            Console.WriteLine("Congrats! You've planted a row of Sesame seeds in a plowed field.");
+                            Console.WriteLine("Press return to go back to the main menu.");
+                            Console.ReadLine();
+                        } else if (fieldTypeNum == 2) {
+                            farm.NaturalFields[parsedChoice].AddResource (Plant);
+                            Console.WriteLine("Congrats! You've planted a row of Wildflower seeds in a natural field.");
+                            Console.WriteLine("Press return to go back to the main menu.");
+                            Console.ReadLine();
+                        } else {
+                            if (parsedChoice > farm.NaturalFields.Count - 1) {
+                                parsedChoice = parsedChoice - farm.NaturalFields.Count;
+                                farm.PlowedFields[parsedChoice].AddResource (Plant);
+                                Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a plowed field.");
+                                Console.WriteLine("Press return to go back to the main menu.");
+                                Console.ReadLine();
+                            } else {
+                                farm.NaturalFields[parsedChoice].AddResource (Plant);
+                                Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a natural field.");
+                                Console.WriteLine("Press return to go back to the main menu.");
+                                Console.ReadLine();
+                            }
+                        }
+                        break;
+                    }
                 }
-
+                catch
+                {
+                    Console.WriteLine("Please enter a valid index range");
+                }
             }
+
 
             // farm.GrazingFields[choice].AddResource (Plant);
 

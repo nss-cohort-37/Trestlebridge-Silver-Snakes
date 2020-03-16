@@ -11,20 +11,45 @@ namespace Trestlebridge.Actions {
 
       var availableChickenHouses = farm.ChickenHouses.Where(chickenHome => chickenHome.Animals.Count < chickenHome.Capacity).ToList();
 
-      for (int i = 0; i < availableChickenHouses.Count; i++) {
-        Console.Write ($"{i + 1}. Chicken House {farm.ChickenHouses[i].AnimalCount()} ");
+      if (availableChickenHouses.Count == 0)
+      {
+          Console.WriteLine("There are no available chicken houses. \nPress return to go back to the main menu");
+          Console.ReadLine();
+      }
+      else
+      {
+        for (int i = 0; i < availableChickenHouses.Count; i++) {
+          Console.Write ($"{i + 1}. Chicken House {availableChickenHouses[i].AnimalCount()} ");
+          Console.WriteLine ();
+        }
+
         Console.WriteLine ();
+
+        // How can I output the type of animal chosen here?
+        while(true)
+        {
+          Console.WriteLine ($"Place the chicken where? or hit return to exit");
+          Console.Write ("> ");
+            try
+            {
+              var choice = Console.ReadLine ();
+              if (String.IsNullOrEmpty(choice))
+              {
+                break;
+              }
+              else
+              {
+                availableChickenHouses[Int32.Parse (choice) - 1].AddResource (animal);
+                break;
+              }
+            }
+            catch
+            {
+              Console.WriteLine("Please enter a valid index range");
+            }
+        }
       }
 
-      Console.WriteLine ();
-
-      // How can I output the type of animal chosen here?
-      Console.WriteLine ($"Place the chicken where?");
-
-      Console.Write ("> ");
-      int choice = Int32.Parse (Console.ReadLine ()) - 1;
-
-      farm.ChickenHouses[choice].AddResource (animal);
 
       /*
           Couldn't get this to work. Can you?

@@ -5,7 +5,7 @@ using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Animals;
 namespace Trestlebridge.Models.Facilities {
     public class ChickenHouse : IFacility<Chicken> {
-        private int _capacity = 2;
+        private int _capacity = 15;
         public double Capacity {
             get {
                 return _capacity;
