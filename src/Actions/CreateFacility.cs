@@ -16,46 +16,52 @@ namespace Trestlebridge.Actions
             Console.WriteLine("5. Chicken House");
 
             Console.WriteLine();
-            Console.WriteLine("Choose what you want to create");
+            Console.WriteLine("Choose what you want to create or hit return to exit");
 
             Console.Write("> ");
             string input = Console.ReadLine();
 
-            switch (Int32.Parse(input))
+            try
             {
-                case 1:
-                    farm.AddGrazingField(new GrazingField());
-                    Console.WriteLine("Congrats! You've created a grazing field.");
-                    Console.WriteLine("Press return to go back to the main menu.");
-                    Console.ReadLine();
-                    break;
-                case 2:
-                    farm.AddPlowedField(new PlowedField());
-                    Console.WriteLine("Congrats! You've created a plowed field.");
-                    Console.WriteLine("Press return to go back to the main menu.");
-                    Console.ReadLine();
-                    break;
-                case 3:
-                    farm.AddNaturalField(new NaturalField());
-                    Console.WriteLine("Congrats! You've created a natural field.");
-                    Console.WriteLine("Press return to go back to the main menu.");
-                    Console.ReadLine();
-                    break;
+                switch (Int32.Parse(input))
+                {
+                    case 1:
+                        farm.AddGrazingField(new GrazingField());
+                        Console.WriteLine("Congrats! You've created a grazing field.");
+                        Console.WriteLine("Press return to go back to the main menu.");
+                        Console.ReadLine();
+                        break;
+                    case 2:
+                        farm.AddPlowedField(new PlowedField());
+                        Console.WriteLine("Congrats! You've created a plowed field.");
+                        Console.WriteLine("Press return to go back to the main menu.");
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        farm.AddNaturalField(new NaturalField());
+                        Console.WriteLine("Congrats! You've created a natural field.");
+                        Console.WriteLine("Press return to go back to the main menu.");
+                        Console.ReadLine();
+                        break;
+                    case 4:
+                        farm.AddDuckHouse(new DuckHouse());
+                        Console.WriteLine("Congrats! You've created a duck house.");
+                        Console.WriteLine("Press return to go back to the main menu.");
+                        Console.ReadLine();
+                        break;
+                    case 5:
+                        farm.AddChickenHouse(new ChickenHouse());
+                        Console.WriteLine("Congrats! You've created a chicken house.");
+                        Console.WriteLine("Press return to go back to the main menu.");
+                        Console.ReadLine();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
 
-                case 4:
-                    farm.AddDuckHouse(new DuckHouse());
-                    Console.WriteLine("Congrats! You've created a duck house.");
-                    Console.WriteLine("Press return to go back to the main menu.");
-                    Console.ReadLine();
-                    break;
-                case 5:
-                    farm.AddChickenHouse(new ChickenHouse());
-                    Console.WriteLine("Congrats! You've created a chicken house.");
-                    Console.WriteLine("Press return to go back to the main menu.");
-                    Console.ReadLine();
-                    break;
-                default:
-                    break;
             }
         }
     }

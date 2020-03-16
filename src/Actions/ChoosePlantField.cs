@@ -60,14 +60,26 @@ namespace Trestlebridge.Actions {
 
             if (fieldTypeNum == 1) {
                 farm.PlowedFields[choice].AddResource (Plant);
+                Console.WriteLine("Congrats! You've planted a row of Sesame seeds in a plowed field.");
+                Console.WriteLine("Press return to go back to the main menu.");
+                Console.ReadLine();
             } else if (fieldTypeNum == 2) {
                 farm.NaturalFields[choice].AddResource (Plant);
+                Console.WriteLine("Congrats! You've planted a row of Wildflower seeds in a natural field.");
+                Console.WriteLine("Press return to go back to the main menu.");
+                Console.ReadLine();
             } else {
                 if (choice > farm.NaturalFields.Count - 1) {
                     choice = choice - farm.NaturalFields.Count;
                     farm.PlowedFields[choice].AddResource (Plant);
+                    Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a plowed field.");
+                    Console.WriteLine("Press return to go back to the main menu.");
+                    Console.ReadLine();
                 } else {
                     farm.NaturalFields[choice].AddResource (Plant);
+                    Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a natural field.");
+                    Console.WriteLine("Press return to go back to the main menu.");
+                    Console.ReadLine();
                 }
 
             }
