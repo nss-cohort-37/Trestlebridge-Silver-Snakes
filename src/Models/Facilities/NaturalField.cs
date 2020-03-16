@@ -41,7 +41,7 @@ namespace Trestlebridge.Models.Facilities {
             }
             else
             {
-            output.Append ($"Natural field {shortId} has {this._plants.Count} rows of plants\n");
+                output.Append ($"Natural field {shortId} has {this._plants.Count} rows of plants\n");
             }
             
             this._plants.ForEach (a => output.Append ($"   {a}\n"));
@@ -52,11 +52,11 @@ namespace Trestlebridge.Models.Facilities {
         public string PlantCount () {
             if (this._plants.Count == 1)
             {
-            return $"({this._plants.Count} row of plants)";
+                return $"({this._plants.Count} row of plants)";
             }
             else
             {
-            return $"({this._plants.Count} rows of plants)";
+                return $"({this._plants.Count} rows of plants)";
             }
         }
         public void PlantTypeCount () {
