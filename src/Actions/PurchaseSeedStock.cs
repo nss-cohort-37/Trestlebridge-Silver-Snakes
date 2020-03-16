@@ -26,20 +26,27 @@ namespace Trestlebridge.Actions {
                     }
                     else
                     {
-                        switch (Int32.Parse (choice)) {
-                    case 1:
-                        ChoosePlantField.CollectPlantInput (farm, new Sesame (), 1);
-                        break;
-                    case 2:
-                        ChoosePlantField.CollectPlantInput (farm, new Sunflower (), 3);
-                        break;
-                    case 3:
-                        ChoosePlantField.CollectPlantInput (farm, new Wildflower (), 2);
-                        break;
-                    default:
-                        break;
+                        if (Int32.Parse(choice) < 1 || Int32.Parse(choice) > 3)
+                        {
+                            Console.WriteLine("Please enter a valid index range");
                         }
-                        break;
+                        else
+                        {
+                            switch (Int32.Parse (choice)) {
+                                case 1:
+                                    ChoosePlantField.CollectPlantInput (farm, new Sesame (), 1);
+                                    break;
+                                case 2:
+                                    ChoosePlantField.CollectPlantInput (farm, new Sunflower (), 3);
+                                    break;
+                                case 3:
+                                    ChoosePlantField.CollectPlantInput (farm, new Wildflower (), 2);
+                                    break;
+                                default:
+                                    break;
+                                    }
+                                    break;
+                        }
                     }
                 }
                 catch
