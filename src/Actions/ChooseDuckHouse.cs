@@ -9,27 +9,46 @@ namespace Trestlebridge.Actions {
     public static void CollectInput (Farm farm, Duck animal) {
       Utils.Clear ();
 
-      for (int i = 0; i < farm.DuckHouses.Count; i++) {
-        if (farm.DuckHouses[i].Animals.Count == farm.DuckHouses[i].Capacity)
-        {
-          Console.WriteLine();
+      var availableDuckHouses = farm.DuckHouses.Where(duckHome => duckHome.Animals.Count < duckHome.Capacity).ToList();
+
+      if (availableDuckHouses.Count == 0)
+      {
+          Console.WriteLine("There are no available duck houses. \nPress return to go back to the main menu");
+          Console.ReadLine();
+      }
+      else
+      {
+        for (int i = 0; i < availableDuckHouses.Count; i++) {
+            Console.Write ($"{i + 1}. DuckHouse {availableDuckHouses[i].AnimalCount()} ");
+            Console.WriteLine ();
         }
-        else
+
+        Console.WriteLine ();
+
+        // How can I output the type of animal chosen here?
+        while(true)
         {
-          Console.Write ($"{i + 1}. DuckHouse {farm.DuckHouses[i].AnimalCount()} ");
-          Console.WriteLine ();
+          Console.WriteLine ($"Place the duck where?");
+          Console.Write ("> ");
+            try
+            {
+              var choice = Console.ReadLine ();
+              if (String.IsNullOrEmpty(choice))
+              {
+                break;
+              }
+              else
+              {
+                availableDuckHouses[Int32.Parse(choice) - 1].AddResource (animal);
+                break;
+              }
+            }
+            catch
+            {
+              Console.WriteLine("Please enter a valid index range");
+            }
         }
       }
-
-      Console.WriteLine ();
-
-      // How can I output the type of animal chosen here?
-      Console.WriteLine ($"Place the duck where?");
-
-      Console.Write ("> ");
-      int choice = Int32.Parse (Console.ReadLine ()) - 1;
-
-      farm.DuckHouses[choice].AddResource (animal);
 
       /*
           Couldn't get this to work. Can you?

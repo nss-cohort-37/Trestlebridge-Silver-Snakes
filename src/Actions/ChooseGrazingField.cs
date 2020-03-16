@@ -12,29 +12,53 @@ namespace Trestlebridge.Actions
         {
             Utils.Clear();
 
-            for (int i = 0; i < farm.GrazingFields.Count; i++)
+            var availableGrazingFields = farm.GrazingFields.Where(grazingField => grazingField.Animals.Count < grazingField.Capacity).ToList();
+
+            if (availableGrazingFields.Count == 0)
             {
-                if (farm.GrazingFields[i].Animals.Count == farm.GrazingFields[i].Capacity)
+                Console.WriteLine("There are no available grazing fields. \nPress return to go back to the main menu");
+                Console.ReadLine();
+            }
+            else
+            {
+                for (int i = 0; i < availableGrazingFields.Count; i++)
                 {
-                    Console.WriteLine();
+                        Console.Write($"{i + 1}. Grazing Field {availableGrazingFields[i].AnimalCount()} ");
+                        availableGrazingFields[i].AnimalTypeCount();
+                        Console.WriteLine();
                 }
-                else
+
+                Console.WriteLine();
+
+                // How can I output the type of animal chosen here?
+                
+                while(true)
                 {
-                    Console.Write($"{i + 1}. Grazing Field {farm.GrazingFields[i].AnimalCount()} ");
-                    farm.GrazingFields[i].AnimalTypeCount();
-                    Console.WriteLine();
+                    Console.WriteLine($"Place the animal where? Or hit return to exit");
+                    Console.Write("> ");
+                    try
+                    {
+                        var choice = Console.ReadLine();
+                        if (String.IsNullOrEmpty(choice))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            availableGrazingFields[Int32.Parse(choice) - 1].AddResource(animal);
+                            break;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Please enter a valid index range");
+                    }
+
                 }
             }
+            
 
-            Console.WriteLine();
-
-            // How can I output the type of animal chosen here?
-            Console.WriteLine($"Place the animal where?");
-
-            Console.Write("> ");
-            int choice = Int32.Parse(Console.ReadLine()) - 1;
-
-            farm.GrazingFields[choice].AddResource(animal);
+            
 
             /*
                 Couldn't get this to work. Can you?

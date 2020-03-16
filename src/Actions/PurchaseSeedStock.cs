@@ -12,14 +12,21 @@ namespace Trestlebridge.Actions {
             Console.WriteLine ("3. Wildflower");
 
             Console.WriteLine ();
-            Console.WriteLine ("What are you buying today? Hit return to exit");
 
-            Console.Write ("> ");
-            string choice = Console.ReadLine ();
-
-            try
+            while(true)
             {
-                switch (Int32.Parse (choice)) {
+                Console.WriteLine ("What are you buying today? Hit return to exit");
+                Console.Write ("> ");
+                try
+                {
+                    string choice = Console.ReadLine ();
+                    if (String.IsNullOrEmpty(choice))
+                    {
+                      break;
+                    }
+                    else
+                    {
+                        switch (Int32.Parse (choice)) {
                     case 1:
                         ChoosePlantField.CollectPlantInput (farm, new Sesame (), 1);
                         break;
@@ -31,11 +38,14 @@ namespace Trestlebridge.Actions {
                         break;
                     default:
                         break;
+                        }
+                        break;
+                    }
                 }
-            }
-            catch (FormatException)
-            {
-            
+                catch
+                {
+                  Console.WriteLine("Please enter a valid index range");
+                }
             }
         }
     }
