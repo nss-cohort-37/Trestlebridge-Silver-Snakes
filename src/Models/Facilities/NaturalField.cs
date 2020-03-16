@@ -34,15 +34,30 @@ namespace Trestlebridge.Models.Facilities {
         public override string ToString () {
             StringBuilder output = new StringBuilder ();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-
-            output.Append ($"Natural field {shortId} has {this._plants.Count} plants\n");
+            
+            if (this._plants.Count == 1)
+            {
+                output.Append ($"Natural field {shortId} has {this._plants.Count} row of plants\n");
+            }
+            else
+            {
+                output.Append ($"Natural field {shortId} has {this._plants.Count} rows of plants\n");
+            }
+            
             this._plants.ForEach (a => output.Append ($"   {a}\n"));
 
             return output.ToString ();
         }
 
         public string PlantCount () {
-            return $"({this._plants.Count} plants)";
+            if (this._plants.Count == 1)
+            {
+                return $"({this._plants.Count} row of plants)";
+            }
+            else
+            {
+                return $"({this._plants.Count} rows of plants)";
+            }
         }
         public void PlantTypeCount () {
             if (this._plants.Count > 0) {
@@ -57,9 +72,9 @@ namespace Trestlebridge.Models.Facilities {
 
                 foreach (var report in PlantTypeCount) {
                     if (report.PlantCount == 1) {
-                        Console.Write ($"({report.PlantCount} {report.PlantType}) ");
+                        Console.Write ($"({report.PlantCount} row of {report.PlantType}s) ");
                     } else {
-                        Console.Write ($"({report.PlantCount} {report.PlantType}s) ");
+                        Console.Write ($"({report.PlantCount} rows of {report.PlantType}s) ");
                     }
                 }
             }

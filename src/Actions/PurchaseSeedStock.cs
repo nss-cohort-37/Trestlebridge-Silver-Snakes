@@ -12,23 +12,30 @@ namespace Trestlebridge.Actions {
             Console.WriteLine ("3. Wildflower");
 
             Console.WriteLine ();
-            Console.WriteLine ("What are you buying today?");
+            Console.WriteLine ("What are you buying today? Hit return to exit");
 
             Console.Write ("> ");
             string choice = Console.ReadLine ();
 
-            switch (Int32.Parse (choice)) {
-                case 1:
-                    ChoosePlantField.CollectPlantInput (farm, new Sesame (), 1);
-                    break;
-                case 2:
-                    ChoosePlantField.CollectPlantInput (farm, new Sunflower (), 3);
-                    break;
-                case 3:
-                    ChoosePlantField.CollectPlantInput (farm, new Wildflower (), 2);
-                    break;
-                default:
-                    break;
+            try
+            {
+                switch (Int32.Parse (choice)) {
+                    case 1:
+                        ChoosePlantField.CollectPlantInput (farm, new Sesame (), 1);
+                        break;
+                    case 2:
+                        ChoosePlantField.CollectPlantInput (farm, new Sunflower (), 3);
+                        break;
+                    case 3:
+                        ChoosePlantField.CollectPlantInput (farm, new Wildflower (), 2);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+            
             }
         }
     }
