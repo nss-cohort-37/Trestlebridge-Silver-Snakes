@@ -12,7 +12,7 @@ namespace Trestlebridge.Actions {
       for (int i = 0; i < farm.DuckHouses.Count; i++) {
         if (farm.DuckHouses[i].Animals.Count == farm.DuckHouses[i].Capacity)
         {
-          Console.WriteLine();
+          
         }
         else
         {

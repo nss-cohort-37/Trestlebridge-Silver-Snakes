@@ -9,16 +9,11 @@ namespace Trestlebridge.Actions {
     public static void CollectInput (Farm farm, Chicken animal) {
       Utils.Clear ();
 
-      for (int i = 0; i < farm.ChickenHouses.Count; i++) {
-        if (farm.ChickenHouses[i].Animals.Count == farm.ChickenHouses[i].Capacity)
-        {
-          Console.WriteLine();
-        }
-        else
-        {
+      var availableChickenHouses = farm.ChickenHouses.Where(chickenHome => chickenHome.Animals.Count < chickenHome.Capacity).ToList();
+
+      for (int i = 0; i < availableChickenHouses.Count; i++) {
         Console.Write ($"{i + 1}. Chicken House {farm.ChickenHouses[i].AnimalCount()} ");
         Console.WriteLine ();
-        }
       }
 
       Console.WriteLine ();

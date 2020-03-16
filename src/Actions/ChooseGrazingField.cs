@@ -16,7 +16,7 @@ namespace Trestlebridge.Actions
             {
                 if (farm.GrazingFields[i].Animals.Count == farm.GrazingFields[i].Capacity)
                 {
-                    Console.WriteLine();
+                    
                 }
                 else
                 {
