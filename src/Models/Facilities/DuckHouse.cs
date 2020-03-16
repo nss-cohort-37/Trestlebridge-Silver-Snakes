@@ -38,14 +38,29 @@ namespace Trestlebridge.Models.Facilities {
         }
 
         public string AnimalCount () {
-            return $"({this._animals.Count} ducks)";
+            if (this._animals.Count == 1)
+            {
+                return $"({this._animals.Count} duck)";
+            }
+            else
+            {
+                return $"({this._animals.Count} ducks)";
+            }
         }
 
         public override string ToString () {
             StringBuilder output = new StringBuilder ();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-
-            output.Append ($"Duck house {shortId} has {this._animals.Count} ducks\n");
+            
+            if (this._animals.Count == 1)
+            {
+                output.Append ($"Duck house {shortId} has {this._animals.Count} duck\n");
+            }
+            else
+            {
+                output.Append ($"Duck house {shortId} has {this._animals.Count} ducks\n");
+            }
+            
             this._animals.ForEach (a => output.Append ($"   {a}\n"));
 
             return output.ToString ();

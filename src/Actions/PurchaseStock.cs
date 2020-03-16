@@ -16,35 +16,42 @@ namespace Trestlebridge.Actions {
             Console.WriteLine ("7. Chicken");
 
             Console.WriteLine ();
-            Console.WriteLine ("What are you buying today?");
+            Console.WriteLine ("What are you buying today? Hit return to exit");
 
             Console.Write ("> ");
             string choice = Console.ReadLine ();
 
-            switch (Int32.Parse (choice)) {
-                case 1:
-                    ChooseGrazingField.CollectInput (farm, new Cow ());
-                    break;
-                case 2:
-                    ChooseGrazingField.CollectInput (farm, new Ostrich ());
-                    break;
-                case 3:
-                    ChooseGrazingField.CollectInput (farm, new Pig ());
-                    break;
-                case 4:
-                    ChooseGrazingField.CollectInput (farm, new Goat ());
-                    break;
-                case 5:
-                    ChooseGrazingField.CollectInput (farm, new Sheep ());
-                    break;
-                case 6:
-                    ChooseDuckHouse.CollectInput (farm, new Duck ());
-                    break;
-                case 7:
-                    ChooseChickenHouse.CollectInput (farm, new Chicken ());
-                    break;
-                default:
-                    break;
+            try
+            {
+                switch (Int32.Parse (choice)) {
+                    case 1:
+                        ChooseGrazingField.CollectInput (farm, new Cow ());
+                        break;
+                    case 2:
+                        ChooseGrazingField.CollectInput (farm, new Ostrich ());
+                        break;
+                    case 3:
+                        ChooseGrazingField.CollectInput (farm, new Pig ());
+                        break;
+                    case 4:
+                        ChooseGrazingField.CollectInput (farm, new Goat ());
+                        break;
+                    case 5:
+                        ChooseGrazingField.CollectInput (farm, new Sheep ());
+                        break;
+                    case 6:
+                        ChooseDuckHouse.CollectInput (farm, new Duck ());
+                        break;
+                    case 7:
+                        ChooseChickenHouse.CollectInput (farm, new Chicken ());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+                
             }
         }
     }

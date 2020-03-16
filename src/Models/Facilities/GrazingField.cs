@@ -55,7 +55,14 @@ namespace Trestlebridge.Models.Facilities {
 
         public string AnimalCount()
         {
-            return $"({this._animals.Count} animals)";
+            if (this._animals.Count == 1)
+            {
+                return $"({this._animals.Count} animal)";
+            }
+            else
+            {
+                return $"({this._animals.Count} animals)";
+            }
         }
 
         public void AnimalTypeCount()
