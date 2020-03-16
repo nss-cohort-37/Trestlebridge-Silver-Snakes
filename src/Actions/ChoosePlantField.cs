@@ -124,33 +124,36 @@ namespace Trestlebridge.Actions
                     else
                     {
                         var parsedChoice = Int32.Parse(choice) - 1;
+                        var availablePlowedFields = farm.PlowedFields.Where(plowedField => plowedField.Plants.Count < plowedField.Capacity).ToList();
                         if (fieldTypeNum == 1)
                         {
-                            farm.PlowedFields[parsedChoice].AddResource(Plant);
+                            availablePlowedFields[parsedChoice].AddResource(Plant);
                             Console.WriteLine("Congrats! You've planted a row of Sesame seeds in a plowed field.");
                             Console.WriteLine("Press return to go back to the main menu.");
                             Console.ReadLine();
                         }
                         else if (fieldTypeNum == 2)
                         {
-                            farm.NaturalFields[parsedChoice].AddResource(Plant);
+                            var availableNaturalFields = farm.NaturalFields.Where(naturalField => naturalField.Plants.Count < naturalField.Capacity).ToList();
+                            availableNaturalFields[parsedChoice].AddResource(Plant);
                             Console.WriteLine("Congrats! You've planted a row of Wildflower seeds in a natural field.");
                             Console.WriteLine("Press return to go back to the main menu.");
                             Console.ReadLine();
                         }
                         else
                         {
-                            if (parsedChoice > farm.NaturalFields.Count - 1)
+                            var availableNaturalFields = farm.NaturalFields.Where(naturalField => naturalField.Plants.Count < naturalField.Capacity).ToList();
+                            if (parsedChoice > availableNaturalFields.Count - 1)
                             {
-                                parsedChoice = parsedChoice - farm.NaturalFields.Count;
-                                farm.PlowedFields[parsedChoice].AddResource(Plant);
+                                parsedChoice = parsedChoice - availableNaturalFields.Count;
+                                availablePlowedFields[parsedChoice].AddResource(Plant);
                                 Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a plowed field.");
                                 Console.WriteLine("Press return to go back to the main menu.");
                                 Console.ReadLine();
                             }
                             else
                             {
-                                farm.NaturalFields[parsedChoice].AddResource(Plant);
+                                availableNaturalFields[parsedChoice].AddResource(Plant);
                                 Console.WriteLine("Congrats! You've planted a row of Sunflower seeds in a natural field.");
                                 Console.WriteLine("Press return to go back to the main menu.");
                                 Console.ReadLine();
