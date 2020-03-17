@@ -2,14 +2,20 @@ using System;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Facilities;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Trestlebridge.Actions
 {
-  public class Processing
+  public class ChooseMeatToProcess
   {
-    public static void CollectInput(Farm farm)
+    public static void CollectMeatInput(List<IMeatProducing> Animals)
     {
-      Console.WriteLine("1. Meat Processor");
+
+
+
+
+      Console.WriteLine("Which animal would you like to process?");
 
       while (true)
       {
@@ -24,7 +30,7 @@ namespace Trestlebridge.Actions
           switch (Int32.Parse(choice))
           {
             case 1:
-              ChooseMeatProcessingFacility.CollectProcessingInput(farm);
+              // ChooseMeatProcessingFacility.CollectProcessingInput(farm);
               break;
             default: break;
 
