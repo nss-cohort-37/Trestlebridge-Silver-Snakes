@@ -144,6 +144,7 @@ namespace Trestlebridge.Actions
 
         public static void CollectInput(Farm farm, List<Chicken> animals)
         {
+
             Utils.Clear();
 
             while (true)
@@ -180,27 +181,43 @@ namespace Trestlebridge.Actions
             while (animals.Count != 0)
             {
 
-                Console.WriteLine($"How many chickens would you like to add to a house? You have {animals.Count} to place");
+                Console.WriteLine($"How many chickens would you like to add to a house? You have {animals.Count} to place\n Or press 'Enter' to exit");
                 try
                 {
                     int amount = 0;
-
+                    bool breakLoopBool = false;
                     while (true)
                     {
-                        amount = int.Parse(Console.ReadLine());
+                        string stringAmount = Console.ReadLine();
+                        if (String.IsNullOrEmpty(stringAmount))
+                        {
+                            breakLoopBool = true;
+                            break;
+                        }
+
+                        amount = int.Parse(stringAmount);
                         if (amount > 0 && amount <= animals.Count)
                         {
                             break;
                         }
+
                         else
                         {
                             Console.WriteLine($"Please Enter a number between 1-{animals.Count}");
                         }
                     }
+                    if (breakLoopBool == true)
+                    {
+                        break;
+                    }
                     var availableChickenHouses = farm.ChickenHouses.Where(chickenHome => chickenHome.Animals.Count + amount <= chickenHome.Capacity).ToList();
 
                     while (true)
                     {
+                        if (amount == 0)
+                        {
+                            break;
+                        }
                         Utils.Clear();
                         PrintChickenHouses(farm, availableChickenHouses);
                         Console.WriteLine($"Place the chickens where?\nPlacing {amount} Chickens \nor hit return to exit");
