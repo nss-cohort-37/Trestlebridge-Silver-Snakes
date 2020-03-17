@@ -35,60 +35,66 @@ namespace Trestlebridge.Actions
                 {
                     Console.WriteLine($"Place the chickens where? \nYou have {animals.Count} to place\nor hit return to exit");
                     Console.Write("> ");
-                    try
+                    // try
+                    // {
+                    var choice = Console.ReadLine();
+                    if (String.IsNullOrEmpty(choice))
                     {
-                        var choice = Console.ReadLine();
-                        if (String.IsNullOrEmpty(choice))
+                        break;
+                    }
+                    else
+                    {
+
+                        while (true)
+                        {
+                            Console.WriteLine("How many would you like to add to this house?");
+                            try
+                            {
+                                int amount = int.Parse(Console.ReadLine());
+                                var initialCount = animals.Count;
+                                for (int i = 0; i < amount; i++)
+                                {
+                                    availableChickenHouses[Int32.Parse(choice) - 1].AddResource(animals[i]);
+
+                                }
+
+                                for (int i = 0; i < amount; i++)
+                                {
+                                    animals.Remove(animals[amount - i - 1]);
+
+                                }
+                                Console.WriteLine($"You have added {amount} Chickens to the chicken house");
+
+
+                            }
+                            catch
+                            {
+                                Console.WriteLine("I Broke");
+                            }
+                            break;
+                        }
+
+                        if (animals.Count == 0)
                         {
                             break;
                         }
-                        else
-                        {
 
-                            while (true)
-                            {
-                                Console.WriteLine("How many would you like to add to this house?");
-                                try
-                                {
-                                    int amount = int.Parse(Console.ReadLine());
-                                    var initialCount = animals.Count;
-                                    for (int i = 0; i < amount; i++)
-                                    {
-                                        availableChickenHouses[Int32.Parse(choice) - 1].AddResource(animals[i]);
-                                        animals.Remove(animals[i]);
-                                    }
-
-
-
-                                }
-                                catch
-                                {
-
-                                }
-                                break;
-                            }
-
-                            if (animals.Count == 0)
-                            {
-                                break;
-                            }
-
-                        }
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Please enter a valid index range");
                     }
                 }
+                // catch
+                // {
+                //     Console.WriteLine("Please enter a valid index range");
+                // }
             }
-
-
-            /*
-                Couldn't get this to work. Can you?
-                Stretch goal. Only if the app is fully functional.
-             */
-            // farm.PurchaseResource<IGrazing>(animal, choice);
-
         }
+
+
+        /*
+            Couldn't get this to work. Can you?
+            Stretch goal. Only if the app is fully functional.
+         */
+        // farm.PurchaseResource<IGrazing>(animal, choice);
+
     }
 }
+// }
