@@ -16,19 +16,23 @@ namespace Trestlebridge.Actions
 
       var notEmptyChickenHouses = farm.ChickenHouses.Where(chickenHouse => chickenHouse.Animals.Count > 0).ToList();
 
-      var meatProcessingFacilities = new List<IFacility<I>>();
-
-      for (int i = 0; i < notEmptyGrazingFields.Count; i++)
+      var meatyGrazingFields = notEmptyGrazingFields.Where(grazingField =>
       {
-        // Console.Write($"{i + 1}. Grazing Field {notEmptyGrazingFields[i].AnimalCount()} ");
-        // notEmptyGrazingFields[i].AnimalTypeCount();
-        // Console.WriteLine();
-        meatProcessingFacilities.Add(notEmptyGrazingFields[i]);
+        var allGoats = grazingField.Animals.All(animal => animal.Type == "Goat");
+        return !allGoats;
+      }).ToList();
+
+      int indexCounter = meatyGrazingFields.Count;
+      for (int i = 0; i < meatyGrazingFields.Count; i++)
+      {
+        Console.Write($"{i + 1}. Grazing Field {meatyGrazingFields[i].AnimalCount()} ");
+        meatyGrazingFields[i].AnimalTypeCount();
+        Console.WriteLine();
       }
 
       for (int i = 0; i < notEmptyChickenHouses.Count; i++)
       {
-        Console.Write($"{i + 1}. Chicken House {notEmptyChickenHouses[i].AnimalCount()} ");
+        Console.Write($"{i + 1 + indexCounter}. Chicken House {notEmptyChickenHouses[i].AnimalCount()} ");
         notEmptyChickenHouses[i].AnimalCount();
         Console.WriteLine();
       }
