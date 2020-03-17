@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 using System.Linq;
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     public class GrazingField : IFacility<IGrazing>
     {
         private int _capacity = 20;
@@ -12,31 +13,35 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<IGrazing> _animals = new List<IGrazing>();
 
-        public double Capacity {
-            get {
+        public double Capacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
 
-        public List<IGrazing> Animals {
-            get {
+        public List<IGrazing> Animals
+        {
+            get
+            {
                 return _animals;
             }
         }
 
-        public void AddResource (IGrazing animal)
+        public void AddResource(IGrazing animal)
         {
-                try
-                {
-                    _animals.Add(animal);
-                }
-                catch
-                {
-                    Console.WriteLine("This animal doesn't belong in this field!");
-                }
+            try
+            {
+                _animals.Add(animal);
+            }
+            catch
+            {
+                Console.WriteLine("This animal doesn't belong in this field!");
+            }
         }
 
-        public void AddResource (List<IGrazing> animals) 
+        public void AddResource(List<IGrazing> animals)
         {
             // TODO: implement this...
             throw new NotImplementedException();
@@ -69,16 +74,16 @@ namespace Trestlebridge.Models.Facilities {
         {
             if (this._animals.Count > 0)
             {
-            var animalTypeCount = this._animals
-                .GroupBy(animal => animal.Type)
-                .Select(group =>
-                {
-                    return new AnimalReport
+                var animalTypeCount = this._animals
+                    .GroupBy(animal => animal.Type)
+                    .Select(group =>
                     {
-                        AnimalType = group.Key,
-                        AnimalCount = group.Count()
-                    };
-                });
+                        return new AnimalReport
+                        {
+                            AnimalType = group.Key,
+                            AnimalCount = group.Count()
+                        };
+                    });
 
                 foreach (var report in animalTypeCount)
                 {
