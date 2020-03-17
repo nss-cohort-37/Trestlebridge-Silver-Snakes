@@ -70,6 +70,20 @@ namespace Trestlebridge.Models.Facilities
             }
         }
 
+        public List<IGrouping<string, IGrazing>> AnimalTypeGroups()
+        {
+            if (this._animals.Count > 0)
+            {
+                var AnimalTypeGroups = this._animals
+                    .GroupBy(animal => animal.Type).ToList();
+                return AnimalTypeGroups;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void AnimalTypeCount()
         {
             if (this._animals.Count > 0)
