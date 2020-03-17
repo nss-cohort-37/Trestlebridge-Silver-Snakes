@@ -146,6 +146,27 @@ namespace Trestlebridge.Actions
         {
             Utils.Clear();
 
+            while (true)
+            {
+
+
+                if (farm.ChickenHouses.Count == 0)
+                {
+
+                    Console.WriteLine("There are no available chicken houses. \nPress return to go back to the main menu");
+                    Console.ReadLine();
+                    break;
+                }
+                else
+                {
+                    for (int i = 0; i < farm.ChickenHouses.Count; i++)
+                    {
+                        Console.Write($"{i + 1}. Chicken House {farm.ChickenHouses[i].AnimalCount()} ");
+                        Console.WriteLine();
+                    }
+                    break;
+                }
+            }
 
             static void PrintChickenHouses(Farm farm, List<ChickenHouse> availableChickenHouses)
             {
@@ -180,8 +201,9 @@ namespace Trestlebridge.Actions
 
                     while (true)
                     {
+                        Utils.Clear();
                         PrintChickenHouses(farm, availableChickenHouses);
-                        Console.WriteLine($"Place the chickens where? \nor hit return to exit");
+                        Console.WriteLine($"Place the chickens where?\nPlacing {amount} Chickens \nor hit return to exit");
                         Console.Write("> ");
                         try
                         {
@@ -206,9 +228,19 @@ namespace Trestlebridge.Actions
                                     animals.Remove(animals[amount - i - 1]);
 
                                 }
-                                Console.WriteLine($"You have added {amount} Chickens to the chicken house!");
+                                if (amount == 1)
+                                {
+
+                                    Console.WriteLine($"You have added {amount} Chicken to the chicken house!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"You have added {amount} Chickens to the chicken house!");
+
+                                }
                                 Console.WriteLine($"Press any key to continue");
                                 Console.ReadLine();
+                                Utils.Clear();
                                 PrintChickenHouses(farm, availableChickenHouses);
 
 
@@ -228,6 +260,7 @@ namespace Trestlebridge.Actions
 
                 }
             }
+
         }
     }
 }
